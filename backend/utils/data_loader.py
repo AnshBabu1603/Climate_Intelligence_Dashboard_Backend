@@ -61,21 +61,23 @@ def get_district_data(district_name: str):
     is_extreme = district_name in extreme_df["DISTRICT"].values
 
     return {
-        "district": district_name,
-        "climate_regime": row.iloc[0]["Climate_Regime"],
-        "annual_intensity": float(row.iloc[0]["annual_intensity"]),
-        "monsoon_dominance": float(row.iloc[0]["monsoon_dominance"]),
-        "rainfall_cv": float(row.iloc[0]["rainfall_cv"]),
-        "seasonal_entropy": float(row.iloc[0]["seasonal_entropy"]),
-        "extreme_risk": is_extreme,
-        "seasonal_distribution": {
-            "winter": float(row.iloc[0]["winter_pct"] * 100),
-            "summer": float(row.iloc[0]["summer_pct"] * 100),
-            "monsoon": float(row.iloc[0]["monsoon_pct"] * 100),
-            "post_monsoon": float(row.iloc[0]["post_monsoon_pct"] * 100)
-        }
-
+    "district": district_name,
+    "state": row.iloc[0]["STATE"],  # ← REQUIRED
+    "climate_regime": row.iloc[0]["Climate_Regime"],
+    "annual_intensity": float(row.iloc[0]["annual_intensity"]),
+    "monsoon_dominance": float(row.iloc[0]["monsoon_dominance"]),
+    "rainfall_cv": float(row.iloc[0]["rainfall_cv"]),
+    "seasonal_entropy": float(row.iloc[0]["seasonal_entropy"]),
+    "extreme_risk": is_extreme,
+    "seasonal_distribution": {
+        "winter": float(row.iloc[0]["winter_pct"] * 100),
+        "summer": float(row.iloc[0]["summer_pct"] * 100),
+        "monsoon": float(row.iloc[0]["monsoon_pct"] * 100),
+        "post_monsoon": float(row.iloc[0]["post_monsoon_pct"] * 100)
     }
+}
+
+
 
 
 
