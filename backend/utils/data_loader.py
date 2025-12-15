@@ -6,8 +6,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 clustered_path = os.path.join(BASE_DIR, "data", "clustered_rainfall_regimes.csv")
 extreme_path = os.path.join(BASE_DIR, "data", "extreme_rainfall_districts_dbscan.csv")
 
-clustered_df = pd.read_csv(clustered_path)
-extreme_df = pd.read_csv(extreme_path)
+try:
+    clustered_df = pd.read_csv(clustered_path)
+except Exception as e:
+    raise RuntimeError(f"Failed to load clustered CSV: {e}")
+
+try:
+    extreme_df = pd.read_csv(extreme_path)
+except Exception as e:
+    raise RuntimeError(f"Failed to load extreme CSV: {e}")
+
 
 
 def get_all_districts():
@@ -37,4 +45,5 @@ def get_district_data(district_name: str):
         }
 
     }
+
 
