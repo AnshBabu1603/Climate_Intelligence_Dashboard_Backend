@@ -1,7 +1,14 @@
 import pandas as pd
+import os
 
-clustered_df = pd.read_csv(r"data\clustered_rainfall_regimes.csv")
-extreme_df = pd.read_csv(r"data\extreme_rainfall_districts_dbscan.csv")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+clustered_path = os.path.join(BASE_DIR, "data", "clustered_rainfall_regimes.csv")
+extreme_path = os.path.join(BASE_DIR, "data", "extreme_rainfall_districts_dbscan.csv")
+
+clustered_df = pd.read_csv(clustered_path)
+extreme_df = pd.read_csv(extreme_path)
+
 
 def get_all_districts():
     return sorted(clustered_df["DISTRICT"].unique().tolist())
@@ -30,3 +37,4 @@ def get_district_data(district_name: str):
         }
 
     }
+
