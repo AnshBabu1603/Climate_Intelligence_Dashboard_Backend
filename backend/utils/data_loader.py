@@ -80,7 +80,3 @@ def get_district_data(district_name: str):
 
 
 
-    }
-
-
-
