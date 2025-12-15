@@ -61,7 +61,7 @@ def get_district_data(district_name: str):
 
     return {
         "district": r["DISTRICT"],
-        "state": r["STATE"],
+        "state": r["STATE_UT"],
         "climate_regime": r["Climate_Regime"],
         "annual_intensity": float(r["annual_intensity"]),
         "monsoon_dominance": float(r["monsoon_dominance"]),
@@ -75,3 +75,4 @@ def get_district_data(district_name: str):
             "post_monsoon": float(r["post_monsoon_pct"] * 100),
         },
     }
+
