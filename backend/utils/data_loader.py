@@ -1,7 +1,7 @@
 import pandas as pd
 
-clustered_df = pd.read_csv(r"C:\Users\manis\OneDrive\Desktop\Unsupervised_Rainfall_Pattern_Detection\backend\data\clustered_rainfall_regimes.csv")
-extreme_df = pd.read_csv(r"C:\Users\manis\OneDrive\Desktop\Unsupervised_Rainfall_Pattern_Detection\backend\data\extreme_rainfall_districts_dbscan.csv")
+clustered_df = pd.read_csv(r"data\clustered_rainfall_regimes.csv")
+extreme_df = pd.read_csv(r"data\extreme_rainfall_districts_dbscan.csv")
 
 def get_all_districts():
     return sorted(clustered_df["DISTRICT"].unique().tolist())
@@ -28,4 +28,5 @@ def get_district_data(district_name: str):
             "monsoon": float(row.iloc[0]["monsoon_pct"] * 100),
             "post_monsoon": float(row.iloc[0]["post_monsoon_pct"] * 100)
         }
+
     }
